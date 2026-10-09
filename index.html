@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aaryman Vijaywargi</title>
+<meta name="description" content="Aaryman Vijaywargi: builder, trader, top 5 in the world at bullet chess.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070605; --bg2:#0d0b09; --card:rgba(255,255,255,.035); --line:rgba(255,255,255,.09);
+  --text:#f6f1ea; --muted:#b3aa9c; --dim:#7a7266;
+  --v1:#f59e0b; --v2:#ea580c; --b1:#fb7185; --pink:#fda4af; --gold:#fcd34d;
+  --grad:linear-gradient(100deg,#fde68a 0%,#f59e0b 30%,#f97316 60%,#fb7185 100%);
+  --r:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:Geist,ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.55}
+a{color:inherit;text-decoration:none}
+::selection{background:#ea580c55}
+.serif{font-family:"Instrument Serif",serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.gtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mono{font-family:"Geist Mono",ui-monospace,monospace}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+
+/* ---------- global decoration ---------- */
+.grain{position:fixed;inset:-50%;z-index:60;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.spot{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,30%),rgba(234,88,12,.10),transparent 60%)}
+.progress{position:fixed;top:0;left:0;height:2px;z-index:80;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--grad);box-shadow:0 0 12px #f59e0b}
+.bggrid{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 75%)}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:70;width:min(1160px,100% - 24px);
+  display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 16px;border-radius:999px;
+  background:rgba(16,12,8,.55);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em}
+.brand .logo{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,#ea580c,#fb7185);font-size:16px;box-shadow:0 0 20px #ea580c66}
+.navlinks{display:flex;gap:4px}
+.navlinks a{font-size:14px;color:var(--muted);padding:8px 12px;border-radius:999px;transition:.2s}
+.navlinks a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:500;font-size:15px;cursor:pointer;border:0;transition:transform .2s,box-shadow .2s,background .2s;will-change:transform;font-family:inherit}
+.btn-w{background:#f6f1ea;color:#0d0b09;box-shadow:0 8px 30px rgba(245,158,11,.25),inset 0 -2px 0 rgba(0,0,0,.12)}
+.btn-w:hover{box-shadow:0 10px 40px rgba(245,158,11,.45)}
+.btn-g{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--line)}
+.btn-g:hover{background:rgba(255,255,255,.09)}
+.btn-sm{padding:8px 14px;font-size:14px}
+@media (max-width:760px){.navlinks{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100vh;display:grid;place-items:center;overflow:hidden;isolation:isolate}
+#hero3d{position:absolute;inset:0;z-index:0}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 60% 45% at 50% 42%,rgba(7,6,5,.72),transparent 70%),linear-gradient(to bottom,transparent 70%,var(--bg))}
+.hero .glow{position:absolute;z-index:0;width:900px;height:500px;left:50%;top:58%;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(234,88,12,.35),rgba(251,113,133,.12) 55%,transparent);filter:blur(30px);pointer-events:none}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:140px 0 120px;max-width:900px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;font-size:13.5px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);color:#fbefe0}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{font-size:clamp(44px,7.6vw,96px);line-height:1.0;letter-spacing:-.045em;font-weight:600;margin:26px 0 22px}
+h1 .serif{font-size:1.08em;padding-right:.06em}
+.sub{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:640px;margin:0 auto}
+.sub b{color:var(--text);font-weight:500}
+.cta{display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.hint{margin-top:28px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;width:24px;height:38px;border-radius:14px;border:1.5px solid rgba(255,255,255,.25)}
+.scrollcue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s;transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none;filter:none}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom}
+.mask>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.2,.75,.15,1);transition-delay:var(--d,0s)}
+.in .mask>span,.mask.in>span{transform:none}
+
+/* ---------- marquee ---------- */
+.marquee{position:relative;z-index:2;border-block:1px solid var(--line);background:rgba(255,255,255,.015);overflow:hidden;padding:18px 0;
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;gap:44px;width:max-content;animation:mq 38s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{display:flex;align-items:center;gap:44px;font-size:15px;color:var(--muted);white-space:nowrap}
+.track span::after{content:"✦";color:var(--v1);font-size:12px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:2}
+.sec{padding:130px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--v1);font-family:"Geist Mono",monospace}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--v1)}
+h2{font-size:clamp(34px,5vw,60px);line-height:1.03;letter-spacing:-.04em;font-weight:600;margin:16px 0 18px}
+.lead{color:var(--muted);font-size:18px;max-width:620px}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.stat{position:relative;padding:26px 22px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);overflow:hidden}
+.stat .n{font-size:clamp(34px,4vw,50px);font-weight:600;letter-spacing:-.04em;line-height:1}
+.stat .l{color:var(--muted);font-size:14px;margin-top:10px}
+.stat::after{content:"";position:absolute;inset:auto -30% -60% auto;width:160px;height:160px;border-radius:50%;background:radial-gradient(closest-side,rgba(234,88,12,.25),transparent);pointer-events:none}
+@media (max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- split section ---------- */
+.chess{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+@media (max-width:920px){.chess{grid-template-columns:1fr}}
+.boardwrap{position:relative;aspect-ratio:1/1;border-radius:28px;overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(ellipse at 50% 30%,#2a1a0d,#080605 70%);cursor:grab}
+.boardwrap:active{cursor:grabbing}
+#board3d,#blob3d{position:absolute;inset:0;width:100%;height:100%}
+.boardhud{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;pointer-events:none}
+.pill{pointer-events:auto;font-size:12.5px;padding:7px 12px;border-radius:999px;background:rgba(14,10,7,.7);border:1px solid var(--line);backdrop-filter:blur(8px);color:#fde7c8}
+.pill.mono{letter-spacing:.02em}
+.boardtag{position:absolute;top:14px;left:16px;font-size:12px;color:var(--muted)}
+.chesslist{display:grid;gap:12px;margin-top:26px}
+.chessrow{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line);transition:.25s}
+.chessrow:hover{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.06);transform:translateX(4px)}
+.chessrow .k{color:var(--muted);font-size:14.5px}
+.chessrow .v{font-weight:600;font-size:17px}
+
+/* ---------- reaction game ---------- */
+.game{margin-top:28px;padding:22px;border-radius:22px;background:linear-gradient(180deg,rgba(234,88,12,.10),rgba(255,255,255,.02));border:1px solid rgba(245,158,11,.25)}
+.game h3{font-size:18px;letter-spacing:-.02em;margin-bottom:6px}
+.game p{color:var(--muted);font-size:14.5px}
+.pad{margin-top:16px;height:120px;border-radius:16px;display:grid;place-items:center;cursor:pointer;user-select:none;font-weight:600;font-size:18px;
+  background:#15110d;border:1px solid var(--line);transition:background .12s,transform .12s;text-align:center;padding:10px}
+.pad:active{transform:scale(.985)}
+.pad.wait{background:#2a1220;color:#fecaca}
+.pad.go{background:#123b26;color:#bbf7d0;box-shadow:0 0 40px rgba(74,222,128,.35) inset}
+.pad small{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ---------- work cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
+.card{grid-column:span 2;position:relative;border-radius:24px;padding:26px;background:var(--card);border:1px solid var(--line);overflow:hidden;
+  transform-style:preserve-3d;transition:transform .25s ease,border-color .3s;min-height:290px;display:flex;flex-direction:column}
+.card.wide{grid-column:span 3}
+.card.full{grid-column:span 6;min-height:auto}
+@media (max-width:980px){.card,.card.wide{grid-column:span 3}}
+@media (max-width:680px){.card,.card.wide,.card.full{grid-column:span 6}}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--x,50%) var(--y,50%),rgba(245,158,11,.16),transparent 55%)}
+.card:hover{border-color:rgba(245,158,11,.35)}
+.card:hover::before{opacity:1}
+.card .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);margin-bottom:18px}
+.card h3{font-size:21px;letter-spacing:-.025em;line-height:1.2;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:20px}
+.tag{font-size:12px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#e7dccb}
+.card .big{font-size:44px;font-weight:600;letter-spacing:-.04em;line-height:1;margin:6px 0 10px}
+.card .link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:14px;color:#fde68a;transition:gap .2s}
+.card .link:hover{gap:10px}
+.card .k{position:absolute;right:-12px;top:-30px;font-size:150px;opacity:.05;line-height:1;pointer-events:none;transform:translateZ(30px)}
+.sparkline{width:100%;height:70px;margin-top:6px}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;margin-top:60px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(#f59e0b,#fb7185,transparent)}
+.tli{position:relative;padding:0 0 38px}
+.tli::before{content:"";position:absolute;left:-31px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--v1);box-shadow:0 0 14px #f59e0b}
+.tli .when{font-family:"Geist Mono",monospace;font-size:13px;color:var(--v1)}
+.tli h4{font-size:20px;letter-spacing:-.02em;margin:4px 0}
+.tli p{color:var(--muted);font-size:15px;max-width:640px}
+
+/* ---------- looking for ---------- */
+.look{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+@media (max-width:860px){.look{grid-template-columns:1fr}}
+.lk{padding:24px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.lk .t{font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:.14em;font-family:"Geist Mono",monospace}
+.lk .v{font-size:19px;margin-top:8px;letter-spacing:-.02em}
+
+/* ---------- contact ---------- */
+.contact{position:relative;text-align:center;padding:150px 0 120px;overflow:hidden}
+#orb3d{position:absolute;inset:0;z-index:0}
+.contact .wrap{position:relative;z-index:2}
+.contact h2{font-size:clamp(42px,7vw,88px)}
+.links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;z-index:90;padding:12px 18px;border-radius:999px;background:#f6f1ea;color:#0d0b09;font-weight:500;font-size:14px;transition:.35s;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 0;color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none;filter:none}.mask>span{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="grain"></div>
+<div class="spot" id="spot"></div>
+<div class="bggrid"></div>
+
+<nav>
+  <a href="#top" class="brand"><span class="logo" style="font-size:12px;font-weight:700">AV</span>Aaryman Vijaywargi</a>
+  <div class="navlinks">
+    <a href="#how">How I work</a><a href="#work">Work</a><a href="#story">Story</a>
+  </div>
+  <a class="btn btn-w btn-sm magnet" href="#contact">Get in touch</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <canvas id="hero3d" aria-hidden="true"></canvas>
+  <div class="glow"></div>
+  <div class="hero-inner wrap">
+    <span class="badge rv" style="--d:.1s"><span class="dot"></span>Based in Tampa, FL</span>
+    <h1>
+      <span class="mask"><span style="--d:.15s">I move fast and</span></span><br>
+      <span class="mask"><span style="--d:.3s"><span class="serif gtext">check my work.</span></span></span>
+    </h1>
+    <p class="sub rv" style="--d:.55s">I'm Aaryman, 18. I peaked at <b>#5 in the world at bullet chess</b>, run a <b>$10K+/month</b> resale business, and build trading research, games, and AI tools with AI coding agents.</p>
+    <div class="cta rv" style="--d:.7s">
+      <a class="btn btn-w magnet" href="#work">See my work <span>→</span></a>
+      <a class="btn btn-g magnet" href="#contact">Contact me</a>
+    </div>
+  </div>
+  <div class="scrollcue"></div>
+</header>
+
+<div class="marquee">
+  <div class="track" id="track">
+    <span>Peak #5 world, bullet chess</span><span>Live trading bots</span><span>$10K+/month eBay business</span><span>30+ trading strategies tested</span><span>7 prediction-market &amp; crypto venues</span><span>1:1 San Francisco in the browser</span><span>7,500+ member community</span><span>AI coding agents</span><span>Market microstructure</span>
+  </div>
+</div>
+
+<!-- ================= NUMBERS ================= -->
+<section class="sec" id="numbers">
+  <div class="wrap">
+    <span class="eyebrow rv">By the numbers</span>
+    <h2 class="rv" style="--d:.08s">Results, <span class="serif gtext">not adjectives.</span></h2>
+    <div class="stats">
+      <div class="stat rv" style="--d:.05s"><div class="n">#<span data-count="5">0</span></div><div class="l">Peak world rank, bullet chess (Chess.com)</div></div>
+      <div class="stat rv" style="--d:.12s"><div class="n"><span data-count="3300" data-sep="1">0</span>+</div><div class="l">Peak bullet rating</div></div>
+      <div class="stat rv" style="--d:.19s"><div class="n">$<span data-count="10">0</span>K+</div><div class="l">Monthly sales, eBay business</div></div>
+      <div class="stat rv" style="--d:.26s"><div class="n"><span data-count="7500" data-sep="1">0</span>+</div><div class="l">Community members, grown in under 3 months</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW I WORK ================= -->
+<section class="sec" id="how" style="padding-top:40px">
+  <div class="wrap chess">
+    <div class="boardwrap rv" id="blobwrap">
+      <canvas id="blob3d" aria-hidden="true"></canvas>
+      <span class="boardtag mono">Drag to spin · hover to disturb</span>
+      <div class="boardhud"><span class="pill mono">idea → test → keep</span></div>
+    </div>
+    <div>
+      <span class="eyebrow rv">How I work</span>
+      <h2 class="rv" style="--d:.06s">Try it. Measure it. <span class="serif gtext">Keep what works.</span></h2>
+      <p class="lead rv" style="--d:.12s">I'd rather ship a rough version today and find out what's wrong than plan for a week. The part I care most about is the second step: proving a result is real before trusting it.</p>
+      <div class="chesslist">
+        <div class="chessrow rv" style="--d:.1s"><span class="k">01 · Build fast</span><span class="v">AI coding agents, same day</span></div>
+        <div class="chessrow rv" style="--d:.16s"><span class="k">02 · Try to break it</span><span class="v">Audit checks, out-of-sample tests</span></div>
+        <div class="chessrow rv" style="--d:.22s"><span class="k">03 · Keep what survives</span><span class="v">Drop the rest, no ego</span></div>
+      </div>
+      <div class="game rv" style="--d:.2s">
+        <h3>How fast are you?</h3>
+        <p>Click the moment it turns green.</p>
+        <div class="pad" id="pad" tabindex="0" role="button">Click to start</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <span class="eyebrow rv">Selected work</span>
+    <h2 class="rv" style="--d:.06s">Things I've <span class="serif gtext">built and run.</span></h2>
+    <p class="lead rv" style="--d:.12s">I build with AI coding agents and spend my effort on the logic and on proving the results are real.</p>
+
+    <div class="grid">
+      <article class="card wide tilt rv">
+        <span class="k">$</span>
+        <div class="ico">📦</div>
+        <h3>Co-founder, collectibles resale business</h3>
+        <div class="big gtext">$10K+/mo</div>
+        <p>An online collectibles business on eBay. We source inventory, price items from recent sold data, and track costs and margins on every item to decide what to buy and when to sell.</p>
+        <svg class="sparkline" viewBox="0 0 300 70" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#fb7185"/></linearGradient><linearGradient id="sf" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f59e0b" stop-opacity=".35"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></linearGradient></defs><path class="spk-fill" d="M0 64 C40 62 60 58 90 50 S150 40 180 26 S250 10 300 6 L300 70 L0 70Z" fill="url(#sf)"/><path class="spk" d="M0 64 C40 62 60 58 90 50 S150 40 180 26 S250 10 300 6" fill="none" stroke="url(#sg)" stroke-width="2.5"/></svg>
+        <div class="meta"><span class="tag">100+ orders</span><span class="tag">100% positive feedback</span><span class="tag">Since Jul 2026</span></div>
+      </article>
+
+      <article class="card wide tilt rv" style="--d:.08s">
+        <span class="k">%</span>
+        <div class="ico">📈</div>
+        <h3>Prediction-market research</h3>
+        <p>A four-month research program across seven prediction-market and crypto venues, including Polymarket and Kalshi. I directed AI agents to build and stress-test 30+ strategies, ran live bots with real money, found a pricing flaw in a live betting pool, and built audit checks for look-ahead bias and overconfident stats.</p>
+        <div class="meta"><span class="tag">Market making</span><span class="tag">Adverse selection</span><span class="tag">Cross-venue</span><span class="tag">Python</span></div>
+        <a class="link" href="https://github.com/Aarymanv/prediction-market-research" target="_blank" rel="noopener">View the research →</a>
+      </article>
+
+      <article class="card tilt rv">
+        <span class="k">⇅</span>
+        <div class="ico">⚡</div>
+        <h3>Perp DEX market making</h3>
+        <p>Screened a dozen decentralized perpetual-futures exchanges on spreads, fees, latency and liquidity, built a fee-aware model of small-account maker returns, and deployed a live maker bot.</p>
+        <div class="meta"><span class="tag">Derivatives</span><span class="tag">Microstructure</span></div>
+        <a class="link" href="https://github.com/Aarymanv/perp-dex-research" target="_blank" rel="noopener">View the repo →</a>
+      </article>
+
+      <article class="card tilt rv" style="--d:.06s">
+        <span class="k">⛰</span>
+        <div class="ico">🏎️</div>
+        <h3>HILLBOMB: San Francisco, 1:1</h3>
+        <p>A Forza-style driving game of real San Francisco that runs in the browser, built from OpenStreetMap and elevation data with three.js.</p>
+        <div class="meta"><span class="tag">three.js</span><span class="tag">3D</span><span class="tag">Real map data</span></div>
+        <a class="link" href="https://github.com/Aarymanv/hillbomb-sf" target="_blank" rel="noopener">See screenshots →</a>
+      </article>
+
+      <article class="card tilt rv" style="--d:.12s">
+        <span class="k">◎</span>
+        <div class="ico">🎮</div>
+        <h3>Open Range</h3>
+        <p>A 3D synthwave arcade shooter built for an economics class, with rival hunters, drone waves and an end-of-round report. Playable now.</p>
+        <div class="meta"><span class="tag">three.js</span><span class="tag">Game design</span></div>
+        <a class="link" href="https://aarymanv.github.io/open-season/" target="_blank" rel="noopener">Play it →</a>
+      </article>
+
+      <article class="card full tilt rv">
+        <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+          <div class="ico" style="margin:0">🏨</div>
+          <div style="flex:1;min-width:260px">
+            <h3>Operations intern, The Karol Hotel</h3>
+            <p>Rebuilt the hotel's website, replaced manual contact entry with an AI pipeline that reads business cards, and rebuilt the housekeeping and payroll workbooks. Feb to Aug 2026.</p>
+          </div>
+          <div class="meta" style="margin:0;padding:0"><span class="tag">AI pipeline</span><span class="tag">Web</span><span class="tag">Operations</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section class="sec" id="story">
+  <div class="wrap">
+    <span class="eyebrow rv">Story</span>
+    <h2 class="rv" style="--d:.06s">Try it. Measure it. <span class="serif gtext">Keep what works.</span></h2>
+    <div class="tl">
+      <div class="tli rv"><div class="when">Age 14</div><h4>Started with Discord advertising</h4><p>My first taste of growth: figuring out what actually brings people into a community, and automating the repetitive parts.</p></div>
+      <div class="tli rv"><div class="when">Competitive</div><h4>#5 in the world at bullet chess</h4><p>Peaked at 3,300+ on Chess.com, top 3 in Chess960, former #1 in UltraBullet on Lichess. Still top 100.</p></div>
+      <div class="tli rv"><div class="when">Feb to Aug 2026</div><h4>Operations at a 4-star hotel</h4><p>Website, an AI business-card pipeline, and the housekeeping and payroll workbooks.</p></div>
+      <div class="tli rv"><div class="when">May to Sep 2026</div><h4>Trading research across seven venues</h4><p>30+ strategies, live bots, and the audit checks that told me which results were real. Most failed, which taught me more than any win.</p></div>
+      <div class="tli rv"><div class="when">2026</div><h4>Grew a community to 7,500+</h4><p>Built bots and automation for growth and member tracking. Zero to 7,500+ members in under three months.</p></div>
+      <div class="tli rv"><div class="when">Jul 2026 to now</div><h4>Co-founded a resale business</h4><p>$10K+ a month in sales with 100% positive feedback.</p></div>
+      <div class="tli rv"><div class="when">Fall 2026</div><h4>University of Rochester, Finance</h4><p>Building in parallel: a 1:1 San Francisco driving game and a 3D arcade game.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <canvas id="orb3d" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="eyebrow rv">Contact</span>
+    <h2 class="rv" style="--d:.06s">Let's <span class="serif gtext">talk.</span></h2>
+    <p class="lead rv" style="--d:.12s;margin:0 auto">The fastest way to reach me is email.</p>
+    <div class="links rv" style="--d:.18s">
+      <button class="btn btn-w magnet" id="copy">aaryman.vijaywargi@gmail.com <span>⧉</span></button>
+      <a class="btn btn-g magnet" href="https://www.linkedin.com/in/aaryman-vijaywargi-1a5295256/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-g magnet" href="https://github.com/Aarymanv" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-g magnet" href="https://www.chess.com/member/badfarma07" target="_blank" rel="noopener">Chess.com</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Aaryman Vijaywargi</span><span>Tampa, FL</span></div></footer>
+<div class="toast" id="toast">Email copied</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(() => {
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const DPR = Math.min(devicePixelRatio || 1, 1.75);
+
+/* ================= UI ================= */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.rv,.mask').forEach(el => io.observe(el));
+requestAnimationFrame(() => document.querySelectorAll('.hero .mask').forEach(m => m.classList.add('in')));
+
+// marquee: duplicate content for seamless loop
+const tr = document.getElementById('track'); tr.innerHTML += tr.innerHTML;
+
+// scroll progress + cursor spotlight
+const prog = document.getElementById('progress'), spot = document.getElementById('spot');
+addEventListener('scroll', () => { const h = document.documentElement; prog.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`; }, { passive: true });
+const mouse = { x: 0, y: 0, nx: 0, ny: 0 };
+addEventListener('pointermove', e => {
+  mouse.x = e.clientX; mouse.y = e.clientY; mouse.nx = e.clientX / innerWidth * 2 - 1; mouse.ny = -(e.clientY / innerHeight * 2 - 1);
+  spot.style.setProperty('--mx', e.clientX + 'px'); spot.style.setProperty('--my', e.clientY + 'px');
+}, { passive: true });
+
+// count-up
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return; cio.unobserve(e.target);
+  const el = e.target, end = +el.dataset.count, sep = el.dataset.sep, t0 = performance.now(), dur = RM ? 1 : 1600;
+  const step = t => { const k = Math.min(1, (t - t0) / dur), v = Math.round(end * (1 - Math.pow(1 - k, 4)));
+    el.textContent = sep ? v.toLocaleString('en-US') : v; if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}), { threshold: .6 });
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+// tilt + spotlight cards
+document.querySelectorAll('.tilt').forEach(c => {
+  c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    c.style.setProperty('--x', x + 'px'); c.style.setProperty('--y', y + 'px');
+    if (!RM) c.style.transform = `perspective(900px) rotateX(${(y / r.height - .5) * -6}deg) rotateY(${(x / r.width - .5) * 8}deg) translateY(-2px)`;
+  });
+  c.addEventListener('pointerleave', () => c.style.transform = '');
+});
+// magnetic buttons
+document.querySelectorAll('.magnet').forEach(b => {
+  b.addEventListener('pointermove', e => { if (RM) return; const r = b.getBoundingClientRect();
+    b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .25}px)`; });
+  b.addEventListener('pointerleave', () => b.style.transform = '');
+});
+// sparkline draw-on
+document.querySelectorAll('.spk').forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+  const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { p.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)'; p.style.strokeDashoffset = 0; o.disconnect(); } }); o.observe(p); });
+
+// copy email
+const toast = document.getElementById('toast');
+document.getElementById('copy').onclick = () => {
+  const done = () => { toast.classList.add('on'); setTimeout(() => toast.classList.remove('on'), 1600); };
+  (navigator.clipboard ? navigator.clipboard.writeText('aaryman.vijaywargi@gmail.com') : Promise.reject()).then(done, () => { location.href = 'mailto:aaryman.vijaywargi@gmail.com'; });
+};
+
+// reaction game
+const pad = document.getElementById('pad'); let st = 'idle', tmr, t0, best = null;
+const setPad = (cls, html) => { pad.className = 'pad ' + cls; pad.innerHTML = html; };
+const hit = () => {
+  if (st === 'idle' || st === 'done') { st = 'wait'; setPad('wait', 'Wait for green…'); tmr = setTimeout(() => { st = 'go'; t0 = performance.now(); setPad('go', 'CLICK!'); }, 900 + Math.random() * 2200); }
+  else if (st === 'wait') { clearTimeout(tmr); st = 'done'; setPad('', 'Too early!<small>Click to try again</small>'); }
+  else if (st === 'go') { const ms = Math.round(performance.now() - t0); best = best ? Math.min(best, ms) : ms; st = 'done';
+    const verdict = ms < 200 ? 'Elite reflexes.' : ms < 280 ? 'Fast. Above average.' : 'Solid. Try to beat it.';
+    setPad('', `${ms} ms · ${verdict}<small>Best ${best} ms · click to go again</small>`); }
+};
+pad.addEventListener('pointerdown', hit); pad.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); hit(); } });
+
+if (!window.THREE) return;
+
+/* ================= shared 3D helpers ================= */
+const matChrome = () => new THREE.MeshPhysicalMaterial({ color: 0xffe2b8, roughness: .08, metalness: 1, clearcoat: 1, envMapIntensity: 1.6 });
+function envFor(renderer) { // gradient studio environment for reflections
+  const c = document.createElement('canvas'); c.width = 512; c.height = 256; const x = c.getContext('2d');
+  const g = x.createLinearGradient(0, 0, 0, 256); g.addColorStop(0, '#3a1f0e'); g.addColorStop(.45, '#ea580c'); g.addColorStop(.55, '#120a06'); g.addColorStop(1, '#070504'); x.fillStyle = g; x.fillRect(0, 0, 512, 256);
+  [[120, 70, '#ffffff'], [380, 90, '#fda4af'], [256, 40, '#fda4af']].forEach(([px, py, col]) => { const r = x.createRadialGradient(px, py, 0, px, py, 60); r.addColorStop(0, col); r.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = r; x.fillRect(0, 0, 512, 256); });
+  const tex = new THREE.CanvasTexture(c); tex.mapping = THREE.EquirectangularReflectionMapping; tex.encoding = THREE.sRGBEncoding;
+  const pm = new THREE.PMREMGenerator(renderer); const env = pm.fromEquirectangular(tex).texture; pm.dispose(); return env;
+}
+const matWhite = () => new THREE.MeshPhysicalMaterial({ color: 0xfaf3e8, roughness: .18, metalness: .1, clearcoat: 1, clearcoatRoughness: .15 });
+const matDark = () => new THREE.MeshPhysicalMaterial({ color: 0x5a2410, roughness: .2, metalness: .7, clearcoat: 1, clearcoatRoughness: .2, emissive: 0x4a1a06, emissiveIntensity: .35 });
+const matGlass = () => new THREE.MeshPhysicalMaterial({ color: 0xfde68a, roughness: .08, metalness: 0, transmission: .92, thickness: .8, ior: 1.45, clearcoat: 1, transparent: true, opacity: .95, emissive: 0x7c2d12, emissiveIntensity: .25 });
+
+function makeRenderer(canvas, alpha = true) {
+  const r = new THREE.WebGLRenderer({ canvas, antialias: true, alpha, powerPreference: 'high-performance' });
+  r.setPixelRatio(DPR); r.outputEncoding = THREE.sRGBEncoding; r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.1;
+  return r;
+}
+function sizeTo(renderer, camera, el) {
+  const w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+function visibleLoop(el, fn) { // only animate while on screen
+  let on = false, raf;
+  const loop = t => { fn(t); if (on) raf = requestAnimationFrame(loop); };
+  new IntersectionObserver(es => { const v = es[0].isIntersecting; if (v && !on) { on = true; raf = requestAnimationFrame(loop); } else if (!v) { on = false; cancelAnimationFrame(raf); } }).observe(el);
+  if (RM) setTimeout(() => fn(0), 50);
+}
+function glowSprite(color, size) {
+  const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+  const g = x.createRadialGradient(64, 64, 0, 64, 64, 64); g.addColorStop(0, color); g.addColorStop(1, 'rgba(0,0,0,0)');
+  x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
+  s.scale.set(size, size, 1); return s;
+}
+
+/* ================= HERO: floating pieces + wave field + stars ================= */
+(() => {
+  const canvas = document.getElementById('hero3d'), host = canvas.parentElement;
+  const renderer = makeRenderer(canvas), scene = new THREE.Scene(); scene.environment = envFor(renderer);
+  const camera = new THREE.PerspectiveCamera(45, 1, .1, 200); camera.position.set(0, 1.2, 11);
+  scene.fog = new THREE.FogExp2(0x070605, .045);
+  scene.add(new THREE.HemisphereLight(0xffd8a8, 0x0a0705, .7));
+  const key = new THREE.DirectionalLight(0xffffff, 1.4); key.position.set(4, 6, 6); scene.add(key);
+  const rimV = new THREE.PointLight(0xf97316, 26, 30, 2); rimV.position.set(-5, 2, -3); scene.add(rimV);
+  const rimB = new THREE.PointLight(0xfb7185, 22, 30, 2); rimB.position.set(6, -1, -2); scene.add(rimB);
+  const cursorLight = new THREE.PointLight(0xfde68a, 14, 12, 2); scene.add(cursorLight);
+
+  // wave field of points
+  const COLS = 160, ROWS = 70, wGeo = new THREE.BufferGeometry(), wPos = new Float32Array(COLS * ROWS * 3), wCol = new Float32Array(COLS * ROWS * 3);
+  const cA = new THREE.Color(0xf59e0b), cB = new THREE.Color(0xfb7185), tmp = new THREE.Color();
+  for (let j = 0, i = 0; j < ROWS; j++) for (let k = 0; k < COLS; k++, i++) {
+    wPos[i*3] = (k / (COLS - 1) - .5) * 40; wPos[i*3+2] = -j * .5 + 4;
+    tmp.copy(cA).lerp(cB, k / COLS); const f = 1 - j / ROWS; wCol[i*3] = tmp.r * f; wCol[i*3+1] = tmp.g * f; wCol[i*3+2] = tmp.b * f;
+  }
+  wGeo.setAttribute('position', new THREE.BufferAttribute(wPos, 3)); wGeo.setAttribute('color', new THREE.BufferAttribute(wCol, 3));
+  const wave = new THREE.Points(wGeo, new THREE.PointsMaterial({ size: .06, vertexColors: true, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false }));
+  wave.position.y = -2.6; scene.add(wave);
+
+  // starfield
+  const sGeo = new THREE.BufferGeometry(), sPos = new Float32Array(900 * 3);
+  for (let i = 0; i < 900; i++) { sPos[i*3] = (Math.random() - .5) * 80; sPos[i*3+1] = Math.random() * 30 - 4; sPos[i*3+2] = -Math.random() * 50 - 5; }
+  sGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3));
+  const stars = new THREE.Points(sGeo, new THREE.PointsMaterial({ size: .08, color: 0xffe8cc, transparent: true, opacity: .7, depthWrite: false })); scene.add(stars);
+
+  // orbit rings
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(6.2, .012, 8, 220), new THREE.MeshBasicMaterial({ color: 0xf59e0b, transparent: true, opacity: .18 }));
+  ring.rotation.x = Math.PI / 2.3; scene.add(ring);
+  const ring2 = ring.clone(); ring2.material = ring.material.clone(); ring2.material.color.set(0xfb7185); ring2.scale.setScalar(1.35); ring2.rotation.x = Math.PI / 2.1; ring2.rotation.y = .3; scene.add(ring2);
+
+  // floating abstract shapes
+  const SHAPES = [
+    () => new THREE.TorusKnotGeometry(.55, .18, 160, 24), () => new THREE.IcosahedronGeometry(.75, 0), () => new THREE.TorusGeometry(.6, .2, 32, 90),
+    () => new THREE.OctahedronGeometry(.7, 0), () => new THREE.SphereGeometry(.6, 48, 32), () => new THREE.DodecahedronGeometry(.6, 0),
+    () => new THREE.CylinderGeometry(.35, .35, 1.1, 48), () => new THREE.ConeGeometry(.55, 1.1, 48)
+  ];
+  const layout = [
+    [0, -6.2, .9, -1, matChrome, 1.35], [1, 6.3, 1.5, -1.5, matGlass, 1.25], [2, -5, -2.3, .2, matDark, 1.15],
+    [3, 5.3, -2.1, .2, matChrome, 1.05], [4, -8.6, -.8, -3, matWhite, 1.1], [5, 8.8, -.5, -3, matDark, 1.2],
+    [6, -9, 3.8, -6, matWhite, .9], [7, 8.5, 3.6, -6, matGlass, 1]
+  ];
+  const pieces = layout.map(([t, x, y, z, m, s], i) => {
+    const mesh = new THREE.Mesh(SHAPES[t](), m()); mesh.scale.setScalar(s); mesh.position.set(x, y, z);
+    mesh.userData = { home: new THREE.Vector3(x, y, z), ph: i * 1.7, spin: (i % 2 ? 1 : -1) * (.25 + i * .03), vel: new THREE.Vector3() };
+    scene.add(mesh); return mesh;
+  });
+  // glow behind
+  const halo = glowSprite('rgba(234,88,12,0.55)', 16); halo.position.set(0, .4, -6); scene.add(halo);
+
+  const ray = new THREE.Raycaster(), plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0), hitP = new THREE.Vector3(), mv = new THREE.Vector2();
+  let cam = { x: 0, y: 1.2 };
+  const resize = () => sizeTo(renderer, camera, host); addEventListener('resize', resize); resize();
+  let last = 0;
+  visibleLoop(host, t => {
+    const time = t * .001, dt = Math.min(.05, time - last || .016); last = time;
+    // wave
+    const p = wGeo.attributes.position.array;
+    for (let j = 0, i = 0; j < ROWS; j++) for (let k = 0; k < COLS; k++, i++) {
+      const x = p[i*3], z = p[i*3+2];
+      p[i*3+1] = Math.sin(x * .32 + time * 1.1) * .45 + Math.cos(z * .35 + time * .8) * .35 + Math.sin((x + z) * .15 - time * .6) * .5;
+    }
+    wGeo.attributes.position.needsUpdate = true;
+    // cursor in world
+    mv.set(mouse.nx, mouse.ny); ray.setFromCamera(mv, camera); ray.ray.intersectPlane(plane, hitP);
+    cursorLight.position.set(hitP.x, hitP.y, 2.5);
+    pieces.forEach(m => {
+      const u = m.userData, h = u.home;
+      const target = new THREE.Vector3(h.x + Math.sin(time * .6 + u.ph) * .25, h.y + Math.sin(time * .9 + u.ph) * .35, h.z);
+      const d = m.position.clone().sub(new THREE.Vector3(hitP.x, hitP.y, m.position.z)); const dist = d.length();
+      if (dist < 2.6) u.vel.add(d.normalize().multiplyScalar((2.6 - dist) * 6 * dt)); // repel from cursor
+      u.vel.add(target.sub(m.position).multiplyScalar(2.2 * dt)); u.vel.multiplyScalar(.92); m.position.add(u.vel);
+      m.rotation.y += u.spin * dt; m.rotation.x += u.spin * .6 * dt + u.vel.y * .3; m.rotation.z = Math.sin(time * .7 + u.ph) * .2 + u.vel.x * .6;
+    });
+    ring.rotation.z = time * .05; ring2.rotation.z = -time * .035;
+    stars.rotation.y = time * .006;
+    cam.x += (mouse.nx * .9 - cam.x) * .04; cam.y += (1.2 + mouse.ny * .5 - cam.y) * .04;
+    camera.position.x = cam.x; camera.position.y = cam.y; camera.lookAt(0, .3, 0);
+    const sc = Math.min(1, scrollY / innerHeight); camera.position.z = 11 + sc * 3; scene.rotation.x = sc * .15;
+    renderer.render(scene, camera);
+  });
+})();
+
+/* ================= HOW I WORK: morphing iridescent blob ================= */
+(() => {
+  const wrap = document.getElementById('blobwrap'), canvas = document.getElementById('blob3d');
+  const renderer = makeRenderer(canvas), scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(40, 1, .1, 100);
+  camera.position.set(0, 0, 9); scene.environment = envFor(renderer);
+  scene.add(new THREE.HemisphereLight(0xfde68a, 0x0a0705, .6));
+  const l1 = new THREE.PointLight(0xf59e0b, 2.2, 30, 2); l1.position.set(-4, 3, 4); scene.add(l1);
+  const l2 = new THREE.PointLight(0xfb7185, 2, 30, 2); l2.position.set(4, -2, 4); scene.add(l2);
+  const l3 = new THREE.PointLight(0xfda4af, 1.4, 30, 2); l3.position.set(0, 4, -3); scene.add(l3);
+  const geo = new THREE.SphereGeometry(1.7, 160, 120), base = geo.attributes.position.array.slice();
+  const mat = new THREE.MeshPhysicalMaterial({ color: 0xf59e0b, roughness: .14, metalness: .6, clearcoat: 1, clearcoatRoughness: .06, emissive: 0x3a1405, emissiveIntensity: .25, envMapIntensity: 1.3 });
+  const blob = new THREE.Mesh(geo, mat); scene.add(blob);
+  const wire = new THREE.Mesh(new THREE.IcosahedronGeometry(2.55, 1), new THREE.MeshBasicMaterial({ color: 0xf59e0b, wireframe: true, transparent: true, opacity: .14 })); scene.add(wire);
+  // orbiting satellites
+  const sats = [0xf59e0b, 0xfb7185, 0xfda4af].map((c, i) => { const m = new THREE.Mesh(new THREE.SphereGeometry(.09, 16, 12), new THREE.MeshBasicMaterial({ color: c })); m.userData.r = 2.6 + i * .35; m.userData.s = .6 + i * .25; m.userData.p = i * 2.1; const g = glowSprite('rgba(253,230,138,0.6)', .7); m.add(g); scene.add(m); return m; });
+  const halo = glowSprite('rgba(234,88,12,0.45)', 9); halo.position.z = -2; scene.add(halo);
+  // pointer interaction
+  const ray = new THREE.Raycaster(), mv = new THREE.Vector2(-9, -9), hitLocal = new THREE.Vector3(9, 9, 9); let poke = 0;
+  let rotY = 0, rotX = 0, vY = .25, vX = 0, drag = null;
+  wrap.addEventListener('pointermove', e => {
+    const r = wrap.getBoundingClientRect(); mv.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height * 2 - 1));
+    if (drag) { vY = (e.clientX - drag.x) * .01; vX = (e.clientY - drag.y) * .01; drag.x = e.clientX; drag.y = e.clientY; }
+  });
+  wrap.addEventListener('pointerleave', () => mv.set(-9, -9));
+  wrap.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY }; wrap.setPointerCapture(e.pointerId); poke = 1; });
+  addEventListener('pointerup', () => drag = null);
+  const resize = () => sizeTo(renderer, camera, wrap); addEventListener('resize', resize); resize();
+  const v = new THREE.Vector3();
+  visibleLoop(wrap, t => {
+    const time = t * .001;
+    ray.setFromCamera(mv, camera); const hits = ray.intersectObject(blob);
+    if (hits.length) hitLocal.copy(blob.worldToLocal(hits[0].point.clone())); else hitLocal.multiplyScalar(1.02);
+    poke *= .94;
+    const p = geo.attributes.position.array;
+    for (let i = 0; i < p.length; i += 3) {
+      v.set(base[i], base[i+1], base[i+2]); const n = v.clone().normalize();
+      let d = Math.sin(n.x * 3 + time * 1.3) * .12 + Math.sin(n.y * 4 - time * 1.1) * .1 + Math.sin(n.z * 5 + time * .9) * .08 + Math.sin((n.x + n.y + n.z) * 6 + time * 2) * .04;
+      const dist = v.distanceTo(hitLocal); if (dist < 1.4) d -= (1.4 - dist) * (.35 + poke * .5);
+      d *= 1 + poke * .8;
+      p[i] = n.x * (1.7 + d); p[i+1] = n.y * (1.7 + d); p[i+2] = n.z * (1.7 + d);
+    }
+    geo.attributes.position.needsUpdate = true; geo.computeVertexNormals();
+    if (!drag) { vY += (.25 * .016 - vY) * .03; vX *= .95; }
+    rotY += vY * .1 + .002; rotX += vX * .1; blob.rotation.set(rotX, rotY, 0); wire.rotation.set(-rotX * .5, -rotY * .4 + time * .05, time * .03);
+    sats.forEach(s => { const a = time * s.userData.s + s.userData.p; s.position.set(Math.cos(a) * s.userData.r, Math.sin(a * 1.3) * .9, Math.sin(a) * s.userData.r); });
+    l1.position.x = Math.sin(time * .5) * 4; l2.position.y = Math.cos(time * .4) * 3;
+    mat.color.setHSL(.06 + Math.sin(time * .3) * .03, .85, .55);
+    renderer.render(scene, camera);
+  });
+})();
+
+/* ================= CONTACT: interactive particle orb ================= */
+(() => {
+  const canvas = document.getElementById('orb3d'), host = canvas.parentElement;
+  const renderer = makeRenderer(canvas), scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(50, 1, .1, 100);
+  camera.position.z = 9; scene.environment = envFor(renderer);
+  const N = 2600, geo = new THREE.BufferGeometry(), base = new Float32Array(N * 3), cur = new Float32Array(N * 3), col = new Float32Array(N * 3);
+  const cA = new THREE.Color(0xfde68a), cB = new THREE.Color(0xfb7185), c = new THREE.Color();
+  for (let i = 0; i < N; i++) { // fibonacci sphere
+    const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = i * 2.399963;
+    base[i*3] = Math.cos(th) * r * 3.2; base[i*3+1] = y * 3.2; base[i*3+2] = Math.sin(th) * r * 3.2;
+    c.copy(cA).lerp(cB, (y + 1) / 2); col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+  }
+  cur.set(base);
+  geo.setAttribute('position', new THREE.BufferAttribute(cur, 3)); geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  const pts = new THREE.Points(geo, new THREE.PointsMaterial({ size: .05, vertexColors: true, transparent: true, opacity: .55, blending: THREE.AdditiveBlending, depthWrite: false }));
+  const grp = new THREE.Group(); grp.add(pts); scene.add(grp);
+  const halo = glowSprite('rgba(234,88,12,0.35)', 12); scene.add(halo);
+  const kn = new THREE.Mesh(new THREE.TorusKnotGeometry(.8, .22, 220, 28, 2, 3), matGlass()); scene.add(kn);
+  scene.add(new THREE.HemisphereLight(0xfde68a, 0x0a0705, 1)); const dl = new THREE.DirectionalLight(0xffffff, 1.2); dl.position.set(3, 4, 5); scene.add(dl);
+  const resize = () => sizeTo(renderer, camera, host); addEventListener('resize', resize); resize();
+  const local = new THREE.Vector3();
+  visibleLoop(host, t => {
+    const time = t * .001; grp.rotation.y = time * .12 + mouse.nx * .4; grp.rotation.x = mouse.ny * .25;
+    const r = host.getBoundingClientRect(); const mx = ((mouse.x - r.left) / r.width * 2 - 1) * 5.5, my = -((mouse.y - r.top) / r.height * 2 - 1) * 4;
+    local.set(mx, my, 3.2); grp.worldToLocal(local);
+    for (let i = 0; i < N; i++) {
+      const bx = base[i*3], by = base[i*3+1], bz = base[i*3+2];
+      const breathe = 1 + Math.sin(time * 1.4 + by * 1.5) * .04;
+      let tx = bx * breathe, ty = by * breathe, tz = bz * breathe;
+      const dx = tx - local.x, dy = ty - local.y, dz = tz - local.z, d2 = dx*dx + dy*dy + dz*dz;
+      if (d2 < 4) { const f = (4 - d2) * .35; tx += dx * f; ty += dy * f; tz += dz * f; }
+      cur[i*3] += (tx - cur[i*3]) * .08; cur[i*3+1] += (ty - cur[i*3+1]) * .08; cur[i*3+2] += (tz - cur[i*3+2]) * .08;
+    }
+    geo.attributes.position.needsUpdate = true;
+    kn.rotation.y = time * .5; kn.rotation.x = time * .3; kn.position.set(0, Math.sin(time * 1.2) * .15, -4);
+    renderer.render(scene, camera);
+  });
+})();
+})();
+</script>
+</body>
+</html>
